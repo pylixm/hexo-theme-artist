@@ -1,9 +1,9 @@
 # Menus
 menu:
+  首页: /
   归档: archives
   分类: categories
   标签: tags
-  使用说明: documentation
   关于: about
 
 # Customize
@@ -15,27 +15,27 @@ customize:
         url: images/logo.png
     profile:
         enabled: true # Whether to show profile bar
-        avatar: css/images/avatar1.png
+        avatar: css/images/avatar.png
         gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
-        author: xcc
-        author_title: Web Developer & Designer
-        location: GuangDong, China
-        follow: https://github.com/iamxcc/
-    highlight: solarized-light
+        author: Pylixm
+        author_title: Web Developer & Pythoner 
+        location: BeiJing, China
+        follow: https://github.com/pylixm/
+    highlight: github #solarized-light
     sidebar: right # sidebar position, options: left, right
-    thumbnail: true # enable posts thumbnail, options: true, false
+    thumbnail: false # enable posts thumbnail, options: true, false
     favicon: # path to favicon
     social_links:
         github: http://github.com/ppoffice/hexo-theme-icarus
         知乎: https://www.zhihu.com/people/iamxcc
-        V2EX: https://www.v2ex.com/member/ybzbxcc
-        简书: http://www.jianshu.com/users/a820fe80f428/timeline
+        # V2EX: https://www.v2ex.com/member/ybzbxcc
+        # 简书: http://www.jianshu.com/users/a820fe80f428/timeline
         rss: /atom.xml
     social_icons:
         github: github
         知乎: bookmark
-        V2EX: codepen
-        简书: book
+        # V2EX: codepen
+        # 简书: book
         rss: rss
 
 
@@ -44,11 +44,11 @@ customize:
 # Widgets
 widgets:
     - tagcloud
-    - series
-    - recent_posts
-    # - category
-    # - archive
-    # - tag
+    # - series
+    # - recent_posts
+    #- category
+    - archive
+    #- tag
     - links
 
 # Series
@@ -72,7 +72,7 @@ search:
 # Comment
 comment:
     disqus: # enter disqus shortname here
-    duoshuo: iamccx # enter duoshuo shortname here
+    duoshuo: pylixm # enter duoshuo shortname here
     youyan: # enter youyan uid here
 
 # Share
@@ -99,8 +99,8 @@ miscellaneous:
         twitter_id:
         google_plus:
     links:
-        Hexo: http://hexo.io
-        个人V2EX主页: http://www.v2ex.com/?r=ybzbxcc
+        程序员集散地: http://www.iwebtools.cn
+
 
 # ---------------------------------------------------------------
 # Third Party Services Settings 
@@ -110,3 +110,18 @@ miscellaneous:
 mathjax:
   enable: true
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+
+# Show number of visitors to each article.
+# You can visit https://leancloud.cn get AppID and AppKey.
+leancloud_visitors:
+  enable: true
+  app_id: OBJcj4PU8JI0zDfu0HJSrG6W-gzGzoHsz #<app_id>
+  app_key: tBtFzC72xIlgo2UFbA33nqmU #<app_key>
+
+
+language: zh-CN
+
+auto_excerpt:
+  enable: false 
+  length: 300 

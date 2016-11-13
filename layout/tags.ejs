@@ -2,17 +2,29 @@
     <div class="layout-title">
         <span><%= page.title %></span>
     </div>
-    <div class="layout-wrap-inner tag-cloud">
-        <ul style="overflow:hidden; position: relative" class="tag-list">
-    		<% site.tags.sort('name').each(function(item){ %>
-    		<li class="md-3 sm-4 xs-4 tag-list-item">
-	    		<a href="<%- config.root %><%- item.path %>">
-		    		<div class="tag-list-img"><%= item.name.substring(0, 1) %></div>
-	    			<div class="tag-list-name"><%= item.name %> <!-- (<%= item.posts.length %>) --></div>
-	    		</a>
-    		</li>
-    		
-	    	<% }); %>
-    	</ul>
+    <div class="layout-wrap-inner tag-cloud" style='background: #fff'>
+		 <canvas width="800" height="600" id="myCanvas">
+		 <ul>
+		 <% site.tags.sort('name').each(function(item){ %>
+		 	<li><a href="<%- config.root %><%- item.path %>" target="_blank"><%= item.name %> (<%= item.posts.length %>) </a></li>
+		 <% }); %>
+		 </ul>
+		 </canvas>
     </div>
 </section>
+<script src="/js/jquery.tagcanvas.js" type="text/javascript"></script>
+<script type="text/javascript">
+ $(document).ready(function() {
+   if( ! $('#myCanvas').tagcanvas({
+     textColour : '#999',
+     outlineThickness : 1,
+	 outlineColour: '#000',
+     maxSpeed : 0.03,
+     depth : 0.75
+   })) {
+     // TagCanvas failed to load
+     $('#myCanvasContainer').hide();
+   }
+   // your other jQuery stuff here...
+ });
+ </script>

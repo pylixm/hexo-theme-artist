@@ -35,3 +35,5 @@ insight:
     categories: '分类'
     tags: '标签'
     untitled: '(未命名)'
+post:
+    visitors: '阅读次数'

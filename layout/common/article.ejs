@@ -7,49 +7,53 @@
         <% if (post.link || post.title) { %>
             <header class="article-header">
                 <% if (post.layout != 'page') { %>
+                    <div class="article-category-img">
+                        <%= post.title[0] %>
+                    </div>
+                    <%- partial('post/title', { class_name: 'article-title' }) %>
                     <div class="article-meta">
-                        <div class="article-category-img">
-                            <% var i = 0; %>
-                            <% post.categories.sort('name').forEach(function(item){ %>
-                                <% if (i == 0) { %>
-                                    <%= item.name[0] %>
-                                <% i = i + 1; } %>
-                            <% }); %>
-                        </div>
-                        <%- partial('post/category') %>
                         <%- partial('post/date', { class_name: 'article-date', date_format: null }) %>
+                        <%- partial('post/category') %>
+                        <%- partial('post/visitors') %>
                     </div>
                 <% } %>
             </header>
         <% } %>
-        <div class="article-img">
-            <%- partial('common/thumbnail.ejs', {post: post}) %>
-        </div>
-        
+        <% if(theme.customize.thumbnail) {%>
+            <div class="article-img">
+                <%- partial('common/thumbnail.ejs', {post: post}) %>
+            </div>
+        <% } %>
 
         <div class="article-entry" itemprop="articleBody">
-        <%- partial('post/title', { class_name: 'article-title' }) %>
-        <% if (!index) { %>
-            <%- partial('post/tag') %>
-        <% } %>
-        <% if (index && post.excerpt) { %>
-            <p><%- post.excerpt %></p>
-            <!-- <p class="article-more-link">
-                <a href="<%- url_for(post.path) %>#more"><%= __('article.more') %></a>
-            </p> -->
-        <% } else { %>
-            <% if (!index && post.toc) { %>
-                <div id="toc" class="toc-article">
-                <strong class="toc-title"><%= __('article.catalogue') %></strong>
-                    <%- toc(post.content) %>
-                </div>
+            <% if (index) { %>
+                <% if (theme.auto_excerpt.enable){ %>
+                    <%- post.content.substring(0, theme.auto_excerpt.length)  %>
+                    <% if (post.content.length > theme.auto_excerpt.length) { %>......<% } %>
+                <% } else { %>
+                    <% if(post.excerpt){%>
+                        <p><%- post.excerpt %></p>
+                    <% } else {%>
+                        <%- post.content %>
+                    <% } %>
+                <% } %>
+                <p class="article-more-link">
+                    <a href="<%- url_for(post.path) %>#more"><%= __('article.more') %></a>
+                </p>
+            <% } else { %>
+                <% if (!index && post.toc) { %>
+                    <div id="toc" class="toc-article">
+                    <strong class="toc-title"><%= __('article.catalogue') %></strong>
+                        <%- toc(post.content) %>
+                    </div>
+                <% } %>
+                <%- post.content %>
             <% } %>
-            <%- post.content %>
-        <% } %>
         </div>
 
         <% if (!index) { %>
             <footer class="article-footer">
+                <%- partial('post/tag', { is_sep: false}) %>
                 <%- partial('share/index', { post: post }) %>
                 <%- partial('comment/counter', { post: post }) %>
             </footer>

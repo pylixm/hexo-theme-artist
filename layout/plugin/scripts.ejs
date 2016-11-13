@@ -15,4 +15,7 @@
     <% if (theme.plugins.fancybox) { %>
         <%- js('vendor/fancybox/jquery.fancybox.pack') %>
     <% } %>
+    <% if (theme.leancloud_visitors.enable) { %>
+        <%- partial('plugin/lean-analytics') %>
+    <% } %>
 <% } %>
